@@ -14,8 +14,8 @@
 @{
     AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
 
-
-    var user = db.Teachers.FirstOrDefault(u => u.REFID == User.Identity.GetUserId());
+    var userId = User.Identity.GetUserId();
+    var user = db.Teachers.FirstOrDefault(u => u.REFID == userId);
 }
 
 
