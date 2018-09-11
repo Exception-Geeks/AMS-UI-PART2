@@ -73,18 +73,23 @@
                         @Html.ValidationSummary("", new { @class = "text-danger" })
 
                         <div class="wrap-input100 validate-input" data-validate="Enter Name">
-                            <input class="input100" type="text" name="name" placeholder="Name">
+                            @Html.TextBoxFor(m => m.Name, new { @class = "input100", type = "text", name = "name", placeholder = "Name" })
                             <span class="focus-input100" data-placeholder="&#xf207;"></span>
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Enter username">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "input100", type = "text", name = "username", placeholder = "Username / TID" })
+                            @Html.TextBoxFor(m => m.TID, new { @class = "input100", type = "text", name = "username", placeholder = "TID" })
                             <span class="focus-input100" data-placeholder="&#xf206;"></span>
 
                         </div>
 
                         <div class="wrap-input100 validate-input" data-validate="Enter Department">
-                            <input class="input100" type="text" name="dept" placeholder="Enter Department Code ">
+                            @Html.TextBoxFor(m => m.DID, new { @class = "input100", type = "text", name = "department", placeholder = "Department" })
+                            <span class="focus-input100" data-placeholder="&#xf255;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Email">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "input100", type = "text", name = "email", placeholder = "Email" })
                             <span class="focus-input100" data-placeholder="&#xf255;"></span>
                         </div>
 
