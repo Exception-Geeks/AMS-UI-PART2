@@ -1,43 +1,165 @@
 ﻿@model AttendanceManagement.Models.RegisterViewModel
 @{
     ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
 
-<h2>@ViewBag.Title.</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    @Html.AntiForgeryToken()
-    <h4>Create a new account.</h4>
-    <hr />
-    @Html.ValidationSummary("", new { @class = "text-danger" })
+<head>
 
-    <div class="form-group">
-        @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
-        </div>
-    </div>
-    
-    <div class="form-group">
-        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
-        <div class="col-md-10">
-            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
-        </div>
-    </div>
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" class="btn btn-default" value="Register" />
-        </div>
-    </div>
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <title>Sign Up Page</title>
+
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../fonts/iconic/css/material-design-iconic-font.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/animsition/css/animsition.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../vendor/daterangepicker/daterangepicker.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="./../css/util.css">
+    <link rel="stylesheet" type="text/css" href="./../css/main.css">
+    <!--===============================================================================================-->
+    <!-- Bootstrap core CSS -->
+    <link href="./../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="./../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="./../vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="./../css/creative.min.css" rel="stylesheet">
+
+</head>
+
+<body id="page-top">
+
+
+
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "login100-form validate-form", role = "form" }))
+    {
+        <header class="masthead text-white d-flex">
+            <div class="container my-auto">
+                <div class="row">
+                    <div class="col-lg-3 mx-auto">
+                        <br />
+
+
+                        @Html.AntiForgeryToken()
+                        <span class="login100-form-title p-b-34 p-t-27">
+                            Sign Up
+                        </span>
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Name">
+                            <input class="input100" type="text" name="name" placeholder="Name">
+                            <span class="focus-input100" data-placeholder="&#xf207;"></span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter username">
+                            @Html.TextBoxFor(m => m.Email, new { @class = "input100", type = "text", name = "username", placeholder = "Username / TID" })
+                            <span class="focus-input100" data-placeholder="&#xf206;"></span>
+
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter Department">
+                            <input class="input100" type="text" name="dept" placeholder="Enter Department Code ">
+                            <span class="focus-input100" data-placeholder="&#xf255;"></span>
+                        </div>
+
+
+                        <div class="wrap-input100 validate-input" data-validate="Enter password">
+                            @Html.PasswordFor(m => m.Password, new { @class = "input100", type = "password", name = "pass", placeholder = "Password" })
+                            <span class="focus-input100" data-placeholder="&#xf191;"></span>
+
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Confirm password">
+                            @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "input100", type = "password", name = "pass", placeholder = "Confirm Password" })
+
+                            <span class="focus-input100" data-placeholder="&#xf190;"></span>
+                        </div>
+
+                        <div class="contact100-form-checkbox">
+                            <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                            <label class="label-checkbox100" for="ckb1">
+                                <h5>  Remember me </h5>
+                            </label>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn" type="submit">
+                                Register
+                            </button>
+
+                        </div>
+
+
+
+
+                    </div>
+                </div>
+            </div>
+
+        </header>
+    }
+
+
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="./../vendor/jquery/jquery.min.js"></script>
+    <script src="./../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="./../vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="./../vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="./../vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="./../js/creative.min.js"></script>
+
+    <!--===============================================================================================-->
+    <script src="./../vendor/jquery/jquery-3.2.1.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../vendor/animsition/js/animsition.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../vendor/bootstrap/js/popper.js"></script>
+    <script src="./../vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../vendor/select2/select2.min.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../vendor/daterangepicker/moment.min.js"></script>
+    <script src="./../vendor/daterangepicker/daterangepicker.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../vendor/countdowntime/countdowntime.js"></script>
+    <!--===============================================================================================-->
+    <script src="./../js/main.js"></script>
+
+
+
+</body>
+
+
+
+</html>

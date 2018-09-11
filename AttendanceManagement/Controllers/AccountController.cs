@@ -78,13 +78,18 @@ namespace AttendanceManagement.Controllers
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            
-            
-      
-                switch (result)
+            AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
+            var user = db.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
+
+
+
+            switch (result)
                 {
                     case SignInStatus.Success:
-                            return RedirectToAction("Index", "teachersPortal");
+                    if(user.IsAdmin == 1)
+                        return RedirectToAction("Index", "AdminPortal");
+                    else
+                        return RedirectToAction("Index", "teachersPortal");
                 case SignInStatus.LockedOut:
                         return View("Lockout");
                     case SignInStatus.RequiresVerification:
@@ -159,6 +164,7 @@ namespace AttendanceManagement.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
@@ -170,7 +176,20 @@ namespace AttendanceManagement.Controllers
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
+                    var customer = db.AspNetUsers.FirstOrDefault(u => u.Email == model.Email);
+
+                    Teacher teacher = new Teacher();
+                    teacher.TID = model.TID;
+                    teacher.Name = model.Name;
+                    teacher.Department_DID = model.DID;
+                    teacher.REFID = customer.Id;
                     
+                    db.Teachers.Add(teacher);
+                    db.SaveChanges();
+                    
+
                     return RedirectToAction("Index", "TeachersPortal");
                 }
                 AddErrors(result);

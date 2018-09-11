@@ -68,8 +68,20 @@ namespace AttendanceManagement.Models
     public class RegisterViewModel
     {
         [Required]
-        [EmailAddress]
+        [Display(Name = "Name")]
+        public string Name { get; set; }
+
+        [Required]
+        [Display(Name = "TID")]
+        public string TID { get; set; }
+
+        [Required]
+        [Display(Name = "DID")]
+        public string DID { get; set; }
+
+        [Required]
         [Display(Name = "Email")]
+        [EmailAddress]
         public string Email { get; set; }
 
         [Required]
@@ -82,6 +94,9 @@ namespace AttendanceManagement.Models
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        [Display(Name = "Remember me?")]
+        public bool RememberMe { get; set; }
     }
 
     public class ResetPasswordViewModel

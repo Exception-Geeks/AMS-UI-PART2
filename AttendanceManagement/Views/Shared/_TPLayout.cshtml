@@ -4,39 +4,82 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - A M S</title>
-    @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("A M S", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("ManageAttendance", "Index", "ManageAttendance")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
-        </div>
-    </div>
-    <div class="container body-content">
+    @using Microsoft.AspNet.Identity
+    @if (Request.IsAuthenticated)
+    {
+        using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+        {
+            @Html.AntiForgeryToken()
+
+
+            <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+                <div class="container">
+                    @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage", @class = "navbar-brand js-scroll-trigger" })
+
+
+                    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+
+
+
+                    <div class="collapse navbar-collapse" id="navbarResponsive">
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item">
+                                @Html.ActionLink("Home", "Index", "TeachersPortal", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Add Attendance", "Index", "ManageAttendance", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Check Attendance", ".....Method name", "TeachersPortal", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            </li>
+                            <li class="nav-item">
+                                @Html.ActionLink("Edit Profile", ".....Method name", "TeachersPortal", new { area = "" }, new { @class = "nav-link js-scroll-trigger" })
+                            </li>
+
+                            <li class="nav-item">
+                                <a href="javascript:document.getElementById('logoutForm').submit()" class="nav-link js-scroll-trigger">Log off</a>
+                            </li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+
+
+
+
+            @RenderBody()
+            <hr />
+            <footer>
+                <p style="font-family:Open Sans; text-align:center">&copy; @DateTime.Now.Year - Aikya Software Wing RNSIT</p>
+            </footer>
+
+            @Scripts.Render("~/bundles/jquery")
+            @Scripts.Render("~/bundles/bootstrap")
+            @RenderSection("scripts", required: false)
+
+
+
+        }
+    }
+    else
+    {
+
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Aikya Software Wing RNSIT</p>
+            <p style="font-family:Open Sans; text-align:center">&copy; @DateTime.Now.Year - Aikya Software Wing RNSIT</p>
         </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+        @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink", @class = "nav navbar-nav navbar-right" })
+    }
 </body>
 </html>

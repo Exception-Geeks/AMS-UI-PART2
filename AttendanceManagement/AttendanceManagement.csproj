@@ -220,8 +220,38 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AMS.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMS.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AMS.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AMS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AMS.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Attendance.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DataModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -239,41 +269,32 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\Department.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageAttendanceModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Student.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudentModel.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudentModel.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\StudentModel.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Subject.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sysdiagram.cs">
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Teacher_Teaches_Student.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
+      <DependentUpon>AMS.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap-datepicker.standalone.css" />
+    <Content Include="Content\bootstrap-datepicker3.standalone.css" />
     <Content Include="Content\creative.min.css" />
     <Content Include="Content\teachers_portal.css" />
     <Content Include="creative.min3.css" />
@@ -361,6 +382,16 @@
     <Content Include="js\teachers_portal.js" />
     <Content Include="js\teachers_profile.js" />
     <Content Include="js\teacher_signup.js" />
+    <Content Include="Models\AMS.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AMS.edmx</DependentUpon>
+      <LastGenOutput>AMS.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AMS.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AMS.edmx</DependentUpon>
+      <LastGenOutput>AMS.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\DataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>DataModel.edmx</DependentUpon>
@@ -371,16 +402,6 @@
       <DependentUpon>DataModel.edmx</DependentUpon>
       <LastGenOutput>DataModel.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\StudentModel.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-      <LastGenOutput>StudentModel.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\StudentModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>StudentModel.edmx</DependentUpon>
-      <LastGenOutput>StudentModel.cs</LastGenOutput>
-    </Content>
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -390,13 +411,6 @@
     </EntityDeploy>
     <Content Include="Models\DataModel.edmx.diagram">
       <DependentUpon>DataModel.edmx</DependentUpon>
-    </Content>
-    <EntityDeploy Include="Models\StudentModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>StudentModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\StudentModel.edmx.diagram">
-      <DependentUpon>StudentModel.edmx</DependentUpon>
     </Content>
     <Content Include="css\bootstrap-4.0.0-dist\css\bootstrap-grid.css.map" />
     <Content Include="css\bootstrap-4.0.0-dist\css\bootstrap-grid.min.css.map" />
@@ -463,8 +477,17 @@
     <Content Include="fonts\poppins\Poppins-SemiBoldItalic.ttf" />
     <Content Include="fonts\poppins\Poppins-Thin.ttf" />
     <Content Include="fonts\poppins\Poppins-ThinItalic.ttf" />
+    <Content Include="Scripts\bootstrap-datepicker.js" />
+    <Content Include="Scripts\bootstrap-datepicker.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\AMS.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AMS.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AMS.edmx.diagram">
+      <DependentUpon>AMS.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -735,6 +758,7 @@
     <Content Include="scss\_services.scss" />
     <Content Include="scss\_sidebar.scss" />
     <Content Include="scss\_variables.scss" />
+    <Content Include="Views\ManageAttendance\AddAttendance.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

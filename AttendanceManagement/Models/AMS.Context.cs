@@ -13,10 +13,10 @@ namespace AttendanceManagement.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class AttendanceManagementDBEntities : DbContext
+    public partial class AttendanceManagementDBEntities1 : DbContext
     {
-        public AttendanceManagementDBEntities()
-            : base("name=AttendanceManagementDBEntities")
+        public AttendanceManagementDBEntities1()
+            : base("name=AttendanceManagementDBEntities1")
         {
         }
     
@@ -25,10 +25,16 @@ namespace AttendanceManagement.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<Attendance> Attendances { get; set; }
         public virtual DbSet<Department> Departments { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Subject> Subjects { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }
         public virtual DbSet<Teacher_Teaches_Student> Teacher_Teaches_Student { get; set; }
     }

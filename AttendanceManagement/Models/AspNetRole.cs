@@ -12,25 +12,18 @@ namespace AttendanceManagement.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Teacher
+    public partial class AspNetRole
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Teacher()
+        public AspNetRole()
         {
-            this.Attendances = new HashSet<Attendance>();
-            this.Teacher_Teaches_Student = new HashSet<Teacher_Teaches_Student>();
+            this.AspNetUsers = new HashSet<AspNetUser>();
         }
     
-        public string TID { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
-        public string Department_DID { get; set; }
-        public string REFID { get; set; }
     
-        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Attendance> Attendances { get; set; }
-        public virtual Department Department { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teacher_Teaches_Student> Teacher_Teaches_Student { get; set; }
+        public virtual ICollection<AspNetUser> AspNetUsers { get; set; }
     }
 }

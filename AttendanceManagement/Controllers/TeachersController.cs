@@ -12,7 +12,7 @@ namespace AttendanceManagement.Controllers
 {
     public class TeachersController : Controller
     {
-        private AttendanceManagementDBEntities db = new AttendanceManagementDBEntities();
+        private AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
 
         // GET: Teachers
         public ActionResult Index()

@@ -18,7 +18,7 @@ namespace AttendanceManagement.Controllers
 {
     public class BulkUploadController : Controller
     {
-        private AttendanceManagementDBEntities db = new AttendanceManagementDBEntities();
+        private AttendanceManagementDBEntities1 db = new AttendanceManagementDBEntities1();
 
         // GET: BulkUpload
         public ActionResult Index()
